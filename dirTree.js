@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const dirTree = require("./children");
+const dirTree = require("./pythonDirectoryConverter");
 const flatten = require('tree-flatten');
 
 const filteredTree = dirTree("./Python-master", { extensions: /\.py/ });
@@ -12,7 +12,7 @@ const flattenTree =   flatten(filteredTree, 'children')
 
 //console.dir(flattenTree, { depth: null});
 
-fs.writeFile("./trans.js", JSON.stringify(flattenTree), function(err) {
+fs.writeFile("./pythonData.js", JSON.stringify(flattenTree), function(err) {
     if(err) {
         return console.log(err);
     }
