@@ -1,5 +1,7 @@
 'use strict';
 
+//Customised version of #directory-tree; npm# for special use case
+
 const FS = require('fs');
 const PATH = require('path');
 const constants = {
