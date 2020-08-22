@@ -53,7 +53,7 @@ function isRegExp(regExp) {
 function directoryTree (path, options, onEachFile, onEachDirectory) {
 	const name = PATH.basename(path, '.py');
 	path = options && options.normalizePath ? normalizePath(path) : path;
-	const item = { name };
+	const item = { title:name };
 	let stats;
 
 	try { stats = FS.statSync(path); }

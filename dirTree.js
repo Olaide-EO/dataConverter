@@ -12,7 +12,13 @@ const flattenTree =   flatten(filteredTree, 'children')
 
 //console.dir(flattenTree, { depth: null});
 
-fs.writeFile("./pythonData.js", JSON.stringify(flattenTree), function(err) {
+const length = flattenTree.length
+
+for ( let i = 0; i < length - 1; i++){
+	flattenTree[ i + 1].index = i
+}
+
+fs.writeFile("./pythonDataIndexed.js", JSON.stringify(flattenTree), function(err) {
     if(err) {
         return console.log(err);
     }
