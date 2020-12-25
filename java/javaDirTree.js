@@ -18,9 +18,11 @@ for ( let i = 0; i < length - 1; i++){
 	flattenTree[ i + 1].index = i
 }
 
+//.split(/(?=[A-Z])/);
+
 for(let i = 0; i < length - 1; i++){
   flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title
-    .split('_')
+    .split(/(?=[A-Z])/)
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
