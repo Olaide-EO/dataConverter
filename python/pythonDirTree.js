@@ -3,7 +3,7 @@ const fs = require('fs');
 const dirTree = require("./pythonDirectoryConverter");
 const flatten = require('tree-flatten');
 
-const filteredTree = dirTree("./Python-master", { extensions: /\.py/ });
+const filteredTree = dirTree("./Python-master", { extensions: /\.py/, exclude: /__init__\.py/ });
 
 
 const flattenTree =   flatten(filteredTree, 'children')
