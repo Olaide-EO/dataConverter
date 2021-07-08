@@ -46,12 +46,11 @@ function isRegExp(regExp) {
  * to the options supplied, and invoking optional
  * @param  {String} path
  * @param  {Object} options
- * @param  {function} onEachFile
  * @param  {function} onEachDirectory
  * @return {Object}
  */
-function directoryTree (path, options, onEachFile, onEachDirectory) {
-	const name = PATH.basename(path, '.js');
+function directoryTree (path, options, parent) {
+	const name = PATH.basename(path, PATH.extname(path));
 	path = options && options.normalizePath ? normalizePath(path) : path;
 	const item = { title:name };
 	let stats;
@@ -86,18 +85,27 @@ function directoryTree (path, options, onEachFile, onEachDirectory) {
 			item.category = path.split(PATH.sep).slice(-2, -1)[0];
 			item.id = name + '_' + item.category 
 		}
+        
+        if(name.toLowerCase() === "readme"){
+            if(parent){
+                parent.algorithm = FS.readFileSync(path, "utf-8");
+                parent.filetype = ext;
+                return null;
+            }
+        }
+
+        if(name.toLowerCase().startsWith("readme") && parent){
+          return null;
+        }
 
 		item.algorithm = FS.readFileSync(path, "utf-8");
-
+        item.filetype = ext;
 		if (options && options.attributes) {
 			options.attributes.forEach((attribute) => {
 				item[attribute] = stats[attribute];
 			});
 		}
 
-		if (onEachFile) {
-			onEachFile(item, PATH, stats);
-		}
 	}
 	else if (stats.isDirectory()) {
 		let dirData = safeReadDirSync(path);
@@ -118,12 +126,9 @@ function directoryTree (path, options, onEachFile, onEachDirectory) {
 			item.id = name
 		}
 		item.children = dirData
-			.map(child => directoryTree(PATH.join(path, child), options, onEachFile, onEachDirectory))
+			.map(child => directoryTree(PATH.join(path, child), options, item))
 			.filter(e => !!e);
 		
-		if (onEachDirectory) {
-			onEachDirectory(item, PATH, stats);
-		}
 	} else {
 		return null; // Or set item.size = 0 for devices, FIFO and sockets ?
 	}

@@ -3,7 +3,7 @@ const fs = require('fs');
 const dirTree = require("./javascriptDirectoryConverter");
 const flatten = require('tree-flatten');
 
-const filteredTree = dirTree("./Javascript-master", { extensions: /\.js/ });
+const filteredTree = dirTree("./Javascript-master", { extensions: /\.(md|js|py|html)$/, exclude: /__test__|_test_/ });
 
 
 const flattenTree =   flatten(filteredTree, 'children')
@@ -14,12 +14,12 @@ const flattenTree =   flatten(filteredTree, 'children')
 
 const length = flattenTree.length
 
-for ( let i = 0; i < length - 1; i++){
-	flattenTree[ i + 1].index = i
+for ( let i = 0; i < length; i++){
+	flattenTree[i].index = i
 }
 
-for(let i = 0; i < length - 1; i++){
-  flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title
+for(let i = 0; i < length; i++){
+  flattenTree[i].title	= flattenTree[i].title
     .split(/(?=[A-Z])/)
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
