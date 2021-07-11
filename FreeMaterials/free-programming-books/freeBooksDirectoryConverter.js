@@ -1,9 +1,8 @@
 'use strict';
 
-//Customised version of #directory-tree; npm# for special use case
-
 const FS = require('fs');
 const PATH = require('path');
+
 const constants = {
 	DIRECTORY: 'directory',
 	FILE: 'file'
@@ -46,11 +45,13 @@ function isRegExp(regExp) {
  * to the options supplied, and invoking optional
  * @param  {String} path
  * @param  {Object} options
+ * @param  {function} onEachFile
  * @param  {function} onEachDirectory
  * @return {Object}
  */
-function directoryTree (path, options, parent) {
-	const name = PATH.basename(path, PATH.extname(path));
+
+function directoryTree (path, options, onEachFile, onEachDirectory) {
+    const name = PATH.basename(path, PATH.extname(path))
 	path = options && options.normalizePath ? normalizePath(path) : path;
 	const item = { title:name };
 	let stats;
@@ -78,36 +79,27 @@ function directoryTree (path, options, parent) {
 	//	item.extension = ext;
 	//	item.type = constants.FILE;
 
-		if(PATH.dirname(path) === "Javascript-master"){
+		if(PATH.dirname(path) === "free-programming-books-master"){
 			item.category = null;
 
 		}else {
 			item.category = path.split(PATH.sep).slice(-2, -1)[0];
 			item.id = name + '_' + item.category 
 		}
-        
-        if(name.toLowerCase() === "readme"){
-            if(parent){
-                parent.title = parent.title
-                parent.readme = FS.readFileSync(path, "utf-8");
-                parent.filetype = ext;
-            }
-            item.type = "hidden"
-        }
-
-        if(name.toLowerCase().startsWith("readme") && name.toLowerCase() !== "readme"){
-          return null;
-        }
 
 		item.algorithm = FS.readFileSync(path, "utf-8");
         item.filetype = ext;
+
 		if (options && options.attributes) {
 			options.attributes.forEach((attribute) => {
 				item[attribute] = stats[attribute];
 			});
 		}
-    }
-    
+
+		if (onEachFile) {
+			onEachFile(item, PATH, stats);
+		}
+	}
 	else if (stats.isDirectory()) {
 		let dirData = safeReadDirSync(path);
 		if (dirData === null) return null;
@@ -117,21 +109,23 @@ function directoryTree (path, options, parent) {
 				item[attribute] = stats[attribute];
 			});
 		}
-		if(PATH.dirname(path) === "Javascript-master"){
+		if(PATH.dirname(path) === "free-programming-books-master"){
 			item.category = null;
 			item.id = name;
-
 
 		}else {
 			item.category = path.split(PATH.sep).slice(-2, -1)[0]; 
 			item.id = name
 		}
 		item.children = dirData
-			.map(child => directoryTree(PATH.join(path, child), options, item))
+			.map(child => directoryTree(PATH.join(path, child), options, onEachFile, onEachDirectory))
 			.filter(e => !!e);
 		
+		if (onEachDirectory) {
+			onEachDirectory(item, PATH, stats);
+		}
 	} else {
-		return null; // Or set item.size = 0 for devices, FIFO and sockets ?
+		return null;
 	}
 	return item;
 }

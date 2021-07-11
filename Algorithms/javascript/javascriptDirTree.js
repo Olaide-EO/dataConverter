@@ -14,12 +14,18 @@ const flattenTree =   flatten(filteredTree, 'children')
 
 const length = flattenTree.length
 
-for ( let i = 0; i < length; i++){
-	flattenTree[i].index = i
+for ( let i = 0; i < length - 1; i++){
+	flattenTree[ i + 1].index = i
 }
 
-for(let i = 0; i < length; i++){
-  flattenTree[i].title	= flattenTree[i].title
+for(let i = 0; i < length - 1; i++){
+    flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title
+      .split("-")
+      .join(' ')
+  }
+
+for(let i = 0; i < length - 1; i++){
+  flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title
     .split(/(?=[A-Z])/)
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')

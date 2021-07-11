@@ -1,9 +1,8 @@
 const fs = require('fs');
-const dirTree = require("./handbookDirectoryConverter");
+const dirTree = require("./othersDirectoryConverter.js");
 const flatten = require('tree-flatten');
 
-const filteredTree = dirTree("./handbook-master", { extensions: /\.(md|js|py|html)$/, exclude: /__init__\.py/ });
-
+const filteredTree = dirTree("./others-master", { extensions: /\.(md|js|py|html)$/, exclude: /__init__\.py/ });
 const flattenTree =   flatten(filteredTree, 'children')
 
 const length = flattenTree.length
@@ -14,7 +13,7 @@ for ( let i = 0; i < length - 1; i++){
 
 for(let i = 0; i < length - 1; i++){
   flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title.toLowerCase()
-    .split('_')
+    .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
@@ -26,7 +25,7 @@ for(let i = 0; i < length - 1; i++){
       .join(' ')
   }
 
-fs.writeFile("./handbookDataMain.js", JSON.stringify(flattenTree), function(err) {
+fs.writeFile("./othersDataMain.js", JSON.stringify(flattenTree), function(err) {
     if(err) {
         return console.log(err);
     }
