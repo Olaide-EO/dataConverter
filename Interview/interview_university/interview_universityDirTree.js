@@ -3,7 +3,7 @@ const fs = require('fs');
 const dirTree = require("./interview_universityDirectoryConverter");
 const flatten = require('tree-flatten');
 
-const filteredTree = dirTree("./interview_university-master", { extensions: /\.(md|js|py|html|pdf)$/, exclude: /__init__\.py/ });
+const filteredTree = dirTree("./interview_university", { extensions: /\.(md|js|py|html|pdf)$/, exclude: /__init__\.py/ });
 
 
 const flattenTree =   flatten(filteredTree, 'children')
@@ -24,13 +24,6 @@ for(let i = 0; i < length - 1; i++){
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
-
-for(let i = 0; i < length - 1; i++){
-    flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title.toLowerCase()
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
-  }
 
 fs.writeFile("./interview_universityDataMain.js", JSON.stringify(flattenTree), function(err) {
     if(err) {

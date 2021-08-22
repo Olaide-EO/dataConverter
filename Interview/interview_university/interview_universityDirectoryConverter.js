@@ -51,9 +51,10 @@ function isRegExp(regExp) {
  * @return {Object}
  */
 function directoryTree (path, options, onEachFile, onEachDirectory) {
-    const name = PATH.basename(path, PATH.extname(path))
+	const nnn = PATH.basename(path, '.md')
+	const name = nnn.substring(nnn.indexOf('.') + 1)
 	path = options && options.normalizePath ? normalizePath(path) : path;
-	const item = { title:name };
+	const item = { title: name };
 	let stats;
 
 	try { stats = FS.statSync(path); }
@@ -83,7 +84,7 @@ function directoryTree (path, options, onEachFile, onEachDirectory) {
 			item.category = null;
 
 		}else {
-			item.category = path.split(PATH.sep).slice(-2, -1)[0];
+			item.category = path.substring(path.indexOf('.') + 1).split(PATH.sep).slice(-2, -1)[0];
 			item.id = name + '_' + item.category 
 		}
 
@@ -114,7 +115,7 @@ function directoryTree (path, options, onEachFile, onEachDirectory) {
 			item.id = name;
 
 		}else {
-			item.category = path.split(PATH.sep).slice(-2, -1)[0]; 
+			item.category = path.substring(path.indexOf('.') + 1).split(PATH.sep).slice(-2, -1)[0]; 
 			item.id = name
 		}
 		item.children = dirData
