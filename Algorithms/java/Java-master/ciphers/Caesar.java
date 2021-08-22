@@ -18,6 +18,7 @@ public class Caesar {
    * @param shift
    * @return Encrypted message
    */
+   
   public static String encode(String message, int shift) {
     String encoded = "";
 
