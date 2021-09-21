@@ -1,0 +1,20 @@
+### Java
+
+* [Advanced Software Construction in Java](https://www.edx.org/course/advanced-software-construction-java-mitx-6-005-2x#!)
+* [Central Connecticut State University, Introduction to CS Using Java](http://chortle.ccsu.edu/CS151/cs151java.html)
+* [CS106A - Programming Methodology](https://see.stanford.edu/Course/CS106A) - (Stanford)
+* [Introduction to Java](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-092-introduction-to-programming-in-java-january-iap-2010/)
+* [Java Design Patterns and Architecture](https://www.udemy.com/course/java-design-patterns-tutorial) - John Purcell (Udemy)
+* [Java for Complete Beginners](http://courses.caveofprogramming.com/courses/java-for-complete-beginners)
+* [Java for Mobile Devices - Introducing Codename One](https://codenameone.teachable.com/p/java-for-mobile-devices-introducing-codename-one)
+* [Java Online Training \| Edureka](https://www.youtube.com/watch?v=hBh_CC5y8-s) - (Edureka)
+* [Java Programming](https://testautomationu.applitools.com/java-programming-course/) - Angie Jones (Applitools)
+* [Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming) - (Coursera)
+* [Java tutorial for beginners](https://youtube.com/playlist?list=PLZPZq0r_RZOMhCAyywfnYLlrjiVOkdAI1) - Bro Code (YouTube)
+* [Learn how to program: Java](https://www.learnhowtoprogram.com/java-june-2017) - Epicodus Inc.
+* [Object-Oriented programming with Java, part I](https://moocfi.github.io/courses/2013/programming-part-1/)
+* [Object-Oriented programming with Java, part II](https://moocfi.github.io/courses/2013/programming-part-2/)
+* [Princeton Algorithms, Part 1](https://www.coursera.org/course/algs4partI)
+* [Problem Solving With Java](https://www.udacity.com/course/intro-to-java-programming--cs046) (Udacity)
+* [Software Construction in Java](https://www.edx.org/course/software-construction-java-mitx-6-005-1x)
+* [Spring 5 Core - An Ultimate Guide](https://www.udemy.com/learn-spring-5-core-from-scratch/) - Somnath Musib (Udemy)
