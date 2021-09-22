@@ -1,0 +1,16 @@
+### JavaScript
+
+* [FiveJS](https://fivejs.codeschool.com) (podcast)
+* [Free Quality Javascript video tutorials and screencasts](http://www.screencasts.org/topics/javascript) (screencast)
+* [Front End Happy Hour](http://frontendhappyhour.com) (podcast)
+* [Frontend First](https://frontendfirst.fm) - Sam Selikoff and Ryan Toronto (podcast)
+* [Frontend Five](https://frontendfive.codeschool.com) (podcast)
+* [HTML All The Things](https://www.htmlallthethings.com) (podcast)
+* [JavaScript Air](https://javascriptair.com) (podcast)
+* [JavaScript Jabber](https://devchat.tv/js-jabber) (podcast)
+* [JS Party](https://changelog.com/jsparty) (podcast)
+* [Modern Web](https://www.thisdot.co/modern-web) (podcast)
+* [Node Tuts - Node.JS Video Tutorials](http://nodetuts.com) (screencast)
+* [Real Talk JavaScript](https://realtalkjavascript.simplecast.com) (podcast)
+* [Syntax](https://syntax.fm) (podcast)
+* [The Javascript Show](http://javascriptshow.com) (podcast)
