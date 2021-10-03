@@ -80,11 +80,12 @@ function directoryTree (path, options, onEachFile, onEachDirectory) {
 	//	item.extension = ext;
 	//	item.type = constants.FILE;
 
-		if(PATH.dirname(path) === "interview_university-master"){
+		if(PATH.dirname(path) === "interview_university"){
 			item.category = null;
 
 		}else {
-			item.category = path.substring(path.indexOf('.') + 1).split(PATH.sep).slice(-2, -1)[0];
+			const pp = path.split(PATH.sep).slice(-2, -1)[0] 
+			item.category = pp.substring(pp.indexOf('.') + 1)
 			item.id = name + '_' + item.category 
 		}
 
@@ -110,12 +111,13 @@ function directoryTree (path, options, onEachFile, onEachDirectory) {
 				item[attribute] = stats[attribute];
 			});
 		}
-		if(PATH.dirname(path) === "interview_university-master"){
+		if(PATH.dirname(path) === "interview_university"){
 			item.category = null;
 			item.id = name;
 
 		}else {
-			item.category = path.substring(path.indexOf('.') + 1).split(PATH.sep).slice(-2, -1)[0]; 
+			const pp = path.split(PATH.sep).slice(-2, -1)[0] 
+			item.category = pp.substring(pp.indexOf('.') + 1)
 			item.id = name
 		}
 		item.children = dirData
