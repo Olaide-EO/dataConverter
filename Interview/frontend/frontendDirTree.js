@@ -19,16 +19,15 @@ for ( let i = 0; i < length - 1; i++){
 for(let i = 0; i < length - 1; i++){
     flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title.toLowerCase()
       .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ')
   }
 
-  for(let i = 0; i < length - 1; i++){
-    flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title.toLowerCase()
-      .split('_')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
-  }
+  // for(let i = 0; i < length - 1; i++){
+  //   flattenTree[ i + 1 ].title	= flattenTree[ i + 1 ].title.toLowerCase()
+  //     .split('_')
+  //     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  //     .join(' ')
+  // }
   
 
 fs.writeFile("./frontendDataMain.js", JSON.stringify(flattenTree), function(err) {
